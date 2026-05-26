@@ -1576,5 +1576,17 @@ process.on('unhandledRejection', error => {
     console.error('❌ Необработанная ошибка:', error);
 });
 
+// ========== KEEP-ALIVE ДЛЯ RENDER ==========
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('🤖 Bot is online!');
+});
+
+app.listen(port, () => {
+  console.log(`🌐 Keep-alive server running on port ${port}`);
+});
 // Запуск бота
 client.login(process.env.DISCORD_TOKEN);
